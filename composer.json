@@ -1,0 +1,13 @@
+{
+  "name": "sbain/328/diner",
+  "description": "My MVC Diner Application",
+  "authors": [
+    {
+      "name": "Sage Bain",
+      "email": "bain.sage@student.greenriver.edu"
+    }
+  ],
+  "require": {
+    "bcosca/fatfree-core": "dev-master"
+  }
+}
