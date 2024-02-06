@@ -58,8 +58,12 @@ $f3->route('GET|POST /order1', function($f3) {
         // Redirect to order2 route
         $f3->reroute('order2');
     }
+
+    // Add data to the F3 "hive"
+    $f3->set('meals', array('breakfast', 'lunch', 'dinner'));
+
     //Display a view page
-    $view = new Template();
+    $view = new View();
     echo $view->render('views/order-form1.html');
 });
 
@@ -69,19 +73,19 @@ $f3->route('GET|POST /order2', function($f3) {
 //    echo 'Order Form Part II';
 
 //     If the form has been posted
-//    if($_SERVER['REQUEST_METHOD'] == 'POST')
-//    {
+    if($_SERVER['REQUEST_METHOD'] == 'POST')
+    {
 //        // Validate the data
-//        $food = $_POST['food'];
-//        $meal = $_POST['meal'];
+        $food = $_POST['food'];
+        $meal = $_POST['meal'];
 //        // Put the data in the session array
-//        $f3->set('SESSION.food', $food);
-//        $f3->set('SESSION.meal', $meal);
+        $f3->set('SESSION.food', $food);
+        $f3->set('SESSION.meal', $meal);
 //        // Redirect to order2 route
-//        $f3->reroute('summary');
-//    }
+        $f3->reroute('summary');
+    }
 //    Display a view page
-    $view = new Template();
+    $view = new View();
     echo $view->render('views/order-form2.html');
 });
 
