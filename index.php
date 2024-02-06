@@ -11,6 +11,7 @@ error_reporting(E_ALL);
 
 // Require the autoload file
 require_once('vendor/autoload.php');
+require_once('model/data-layer.php');
 
 //Instantiate the Fat-Free Framework (F3)
 $f3 = Base::instance();
@@ -44,7 +45,6 @@ $f3->route('GET /summary', function() {
 
 // Define the order1 route
 $f3->route('GET|POST /order1', function($f3) {
-//    echo 'Order Form Part I';
 
     // If the form has been posted
     if($_SERVER['REQUEST_METHOD'] == 'POST')
@@ -59,11 +59,11 @@ $f3->route('GET|POST /order1', function($f3) {
         $f3->reroute('order2');
     }
 
-    // Add data to the F3 "hive"
-    $f3->set('meals', array('breakfast', 'lunch', 'dinner'));
+    // Get data from the model and add to the F3 "hive"
+    $f3->set('meals', getMeals());
 
     //Display a view page
-    $view = new View();
+    $view = new Template();
     echo $view->render('views/order-form1.html');
 });
 
@@ -85,7 +85,8 @@ $f3->route('GET|POST /order2', function($f3) {
         $f3->reroute('summary');
     }
 //    Display a view page
-    $view = new View();
+    $f3->set('condiments', getCondiments());
+    $view = new Template();
     echo $view->render('views/order-form2.html');
 });
 
