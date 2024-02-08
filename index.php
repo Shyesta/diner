@@ -49,6 +49,7 @@ $f3->route('GET|POST /order1', function($f3) {
 
     // Initialize variables
     $food = "";
+    $meal = "";
     // If the form has been posted
     if($_SERVER['REQUEST_METHOD'] == 'POST')
     {
@@ -61,7 +62,14 @@ $f3->route('GET|POST /order1', function($f3) {
             $f3->set('errors["food"]', "Invalid food");
         }
 
-        $meal = $_POST['meal'];
+        if(isset($_POST['meal']) and validMeal($_POST['meal']))
+        {
+            $meal = $_POST['meal'];
+        }
+        else
+        {
+            $f3->set('errors["meal"]', "Invalid meal");
+        }
         // If there are no errors
         if(empty($f3->get('errors')))
         {

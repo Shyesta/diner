@@ -20,3 +20,8 @@ function validFood($food)
     }
     return true;
 }
+
+function validMeal($meal)
+{
+    return in_array($meal, getMeals());
+}
