@@ -9,11 +9,9 @@
                 <div class="form-group">
                         <label class="col-sm-4 control-label">Select condiments</label>
                         <div class="col-sm-4">
-                                <p>You chose </p>
-                                
                                 <repeat group="{{@condiments}}" value="{{@condiment}}">
                                         <label>
-                                                <input type="radio"
+                                                <input type="checkbox"
                                                        name="condiments[]"
                                                        value="{{@condiment}}"
                                                 > {{ ucwords(@condiment) }}
