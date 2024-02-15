@@ -4,24 +4,17 @@
  * 328/diner/model/validate.php
  * Validate data for the diner app
  */
-
-// Return true if food is valid
-
-function validFood($food)
+class Validate
 {
-    if (trim($food == ""))
+    // Return true if food is valid
+
+    static function validFood($food)
     {
-        return false;
+        return trim($food) != "";
     }
 
-    if (!ctype_alpha($food))
+    static function validMeal($meal)
     {
-        return false;
+        return in_array($meal, DataLayer::getMeals());
     }
-    return true;
-}
-
-function validMeal($meal)
-{
-    return in_array($meal, getMeals());
 }

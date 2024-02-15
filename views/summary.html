@@ -1,12 +1,15 @@
-<include href="views/header.html"></include>
+<include href="views/header.html" />
 <body>
-    <div class="container">
-        <h1>Sage's Diner</h1>
-        <h2>Thank you for your order!</h2>
-        <p>You ordered {{ @SESSION.food }} for {{ @SESSION.meal }}</p>
-        
-        <a href="{{ @BASE }}">Home Page</a><br>
-        <a href="order1">Place another order</a>
-    </div>
+<div class="container">
+    <h1>Sage's Diner</h1>
+    <h2>Thank you for your order!</h2>
+    <p>You ordered {{ @SESSION.order->getFood() }} for
+        {{ @SESSION.order->getMeal() }}</p>
+    <p>Condiments:  {{ @SESSION.order->getCondiments() }}</p>
+
+    <a href="{{ @BASE }}">Home Page</a>
+    <a href="order1">Place another order</a>
+
+</div>
 </body>
 </html>

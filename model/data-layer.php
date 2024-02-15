@@ -4,13 +4,16 @@
  * This file represents the data layer for my diner app
  * 328/diner/model/data-layer.php
  */
-
-function getMeals()
+class DataLayer
 {
-    return array('breakfast', 'lunch', 'dinner');
+    static function getMeals()
+    {
+        return array('breakfast', 'lunch', 'dinner');
+    }
+
+    static function getCondiments()
+    {
+        return array('ketchup', 'sriracha', 'mayo');
+    }
 }
 
-function getCondiments()
-{
-    return array('ketchup', 'sriracha', 'mayo');
-}
