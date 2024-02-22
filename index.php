@@ -25,6 +25,11 @@ var_dump($order);
 $f3 = Base::instance();
 $con = new Controller($f3);
 
+// Instantiate the DataLayer class
+$dataLayer = new DataLayer();
+
+// Test DataLayer class
+//var_dump($dataLayer->getOrders());
 // Test my Validate class
 //echo Validate::validMeal('sdfj');
 
@@ -55,7 +60,7 @@ $f3->route('GET|POST /order2', function($f3) {
 });
 
 // Define a order form 2 route
-$f3->route('GET /view', function($f3) {
+$f3->route('GET /view-orders', function($f3) {
     $GLOBALS['con']->view();
 });
 

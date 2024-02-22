@@ -6,6 +6,10 @@
 </head>
 <body>
     <h1>View Orders</h1>
+    <repeat group="{{@orders}}" value="{{@order}}">
+        <p>{{@order.order_id}}, {{@order.food}}, {{@order.meal}},
+        {{@order.condiments}}, {{@order.date_time}}</p>
+    </repeat>
     <a href="{{@BASE}}">Home</a>
 </body>
 </html>

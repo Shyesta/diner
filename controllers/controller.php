@@ -123,7 +123,13 @@ class Controller
 
     function view()
     {
+
+        // Get the orders from the model
+        $orders = $GLOBALS['dataLayer']->getOrders();
+        $this->_f3->set('orders', $orders);
+
         $view = new Template();
         echo $view->render('views/view-orders.html');
+
     }
 }
