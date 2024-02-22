@@ -54,6 +54,11 @@ $f3->route('GET|POST /order2', function($f3) {
     $GLOBALS['con']->order2();
 });
 
+// Define a order form 2 route
+$f3->route('GET /view', function($f3) {
+    $GLOBALS['con']->view();
+});
+
 //Run Fat-Free
 $f3->run(); //instance method
 

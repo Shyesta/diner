@@ -120,4 +120,10 @@ class Controller
         $view = new Template();
         echo $view->render('views/breakfast-menu.html');
     }
+
+    function view()
+    {
+        $view = new Template();
+        echo $view->render('views/view-orders.html');
+    }
 }
