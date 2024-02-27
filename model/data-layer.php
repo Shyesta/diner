@@ -28,7 +28,8 @@ class DataLayer
 //            echo  'Connected to database!';
         }
         catch(PDOException $e) {
-            echo $e->getMessage(); // temporary
+            // echo $e->getMessage(); // temporary
+            echo "<p>Oops! Unable to connect.</p>";
         }
     }
 
@@ -41,18 +42,45 @@ class DataLayer
         // SELECT query
         $sql = "SELECT * FROM orders";
 
-// 2. Prepare the statement
+        // 2. Prepare the statement
         $statement = $this->_dbh->prepare($sql);
 
+        // 3. Bind the parameters
 
-// 4. Execute the query
+        // 4. Execute the query
         $statement->execute();
 
-// 5. Process the results
+        // 5. Process the results
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
 
         return $result;
     }
+
+    /**
+     * Save a diner order
+     * @param Order $order
+     * @return int $orderId
+     */
+    function saveOrder($order)
+    {
+        // SELECT query
+        $sql = "INSERT INTO orders (food, meal, condiments) VALUES (:food, :meal, :conds)";
+
+        // 2. Prepare the statement
+        $statement = $this->_dbh->prepare($sql);
+
+        // 3. Bind the parameters
+        $statement->bindValue(':food', $order->getFood());
+        $statement->bindValue(':meal', $order->getMeal());
+        $statement->bindValue(':conds', $order->getCondiments());
+        // 4. Execute the query
+        $statement->execute();
+
+        // 5. Process the results
+        $orderId = $this->_dbh->lastInsertId();
+        return $orderId;
+    }
+
     static function getMeals()
     {
         return array('breakfast', 'lunch', 'dinner');

@@ -3,6 +3,7 @@
 <div class="container">
     <h1>Sage's Diner</h1>
     <h2>Thank you for your order!</h2>
+    <p>Your Order ID is: {{@orderId}}</p>
     <p>You ordered {{ @SESSION.order->getFood() }} for
         {{ @SESSION.order->getMeal() }}</p>
     <p>Condiments:  {{ @SESSION.order->getCondiments() }}</p>
